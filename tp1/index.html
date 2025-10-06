@@ -3,66 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <title>Mon CV - Page d'accueil</title>
-    <link rel="stylesheet" href="cv.css" />
+    <link rel="stylesheet" href="/tp1/CV.css" />
   </head>
   <body>
     <div class="container">
       <header>
         <h1>JOEL ZANNOU</h1>
-        <p class="subtitle">Développeur Web & Ingénieur Cloud / Devops</p>
+        <p class="subtitle">Développeur Web & Ingénieur Cloud / DevOps</p>
+        <p class="contact">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:jochercheur@gmail.com">jochercheur@gmail.com</a>
+        </p>
       </header>
 
       <main>
         <section>
-          <h1><a href="/tp1/formations/index.html">Formations</a></h1>
+          <h1 class="formation">
+            <a href="/tp1/formations/index.html">Formations</a>
+            <span class="tooltip">Plus de détails</span>
+          </h1>
           <table width="100%" border="1">
             <tr>
               <th>Année</th>
-              <th>Formation</th>
+              <th>Formations & Certifications</th>
               <th>Établissement</th>
             </tr>
+
             <tr>
               <td>2025-2026</td>
               <td>Master 2 - Réseaux, Systèmes et Cloud</td>
               <td>
-                <a href="https://galilee.univ-paris13.fr/" target="_blank"
-                  >Université Galilée</a
-                >
+                <a href="https://galilee.univ-paris13.fr/" target="_blank">
+                  <img
+                    src="/galilee.png"
+                    alt="Logo Université Galilée"
+                    class="logo"
+                  />
+                  Université Galilée
+                </a>
               </td>
             </tr>
+
             <tr>
               <td>2025</td>
               <td>AWS Cloud Practitioner</td>
               <td>
-                <a href="https://aws.amazon.com/" target="_blank"
-                  >Amazon Web Services</a
+                <a
+                  href="https://www.credly.com/badges/c65c218e-7a60-4039-894d-a1128891c66f/public_url"
+                  target="_blank"
                 >
+                  <img
+                    src="/tp1/AwsCloudPractionner.jpg"
+                    alt="Logo AWS"
+                    class="logo"
+                  />
+                  Amazon Web Services
+                </a>
               </td>
             </tr>
+
             <tr>
               <td>2024-2025</td>
               <td>Master 1 - 3IR</td>
               <td>
-                <a href="https://galilee.univ-paris13.fr/" target="_blank"
-                  >Université Galilée</a
-                >
+                <a href="https://galilee.univ-paris13.fr/" target="_blank">
+                  <img
+                    src="/galilee.png"
+                    alt="Logo Université Galilée"
+                    class="logo"
+                  />
+                  Université Galilée
+                </a>
               </td>
             </tr>
+
             <tr>
               <td>2011-2016</td>
               <td>Cycle Ingénieur en Réseaux & Télécoms</td>
               <td>
-                <a href="https://www.uac.bj/entite-epac/" target="_blank"
-                  >EPAC</a
-                >
+                <a href="https://www.uac.bj/entite-epac/" target="_blank">
+                  <img src="/tp1/EPAC.png" alt="Logo EPAC" class="logo" />
+                  EPAC
+                </a>
               </td>
             </tr>
           </table>
         </section>
 
         <section>
-          <h1><a href="/tp1/experiences/index.html">Expériences</a></h1>
+          <h1 class="formation">
+            <a href="/tp1/experiences/index.html">Expériences</a>
+            <span class="tooltip">Plus de détails</span>
+          </h1>
           <table width="100%" border="1">
             <tr>
               <th>Période</th>
@@ -92,7 +130,10 @@
           </table>
         </section>
         <section>
-          <h1><a href="competences/index.html">Compétences</a></h1>
+          <h1 class="formation">
+            <a href="competences/index.html">Compétences</a>
+            <span class="tooltip">Plus de détails</span>
+          </h1>
           <table width="100%" border="1">
             <tr>
               <th>Domaine</th>
@@ -108,6 +149,11 @@
               <td>Cloud Computing</td>
               <td>AWS, Azure</td>
               <td>Intermédiaire</td>
+            </tr>
+            <tr>
+              <td>Administration Réseaux</td>
+              <td>Switching, Routing, QoS</td>
+              <td>Avancé</td>
             </tr>
 
             <tr>

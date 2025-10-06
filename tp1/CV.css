@@ -38,6 +38,25 @@ header h1 {
   color: #ecf0f1;
 }
 
+eader .contact {
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+header .contact i {
+  color: #0078d4;
+  margin-right: 8px;
+}
+
+header .contact a {
+  text-decoration: none;
+  color: #ebebeb;
+}
+
+header .contact a:hover {
+  text-decoration: underline;
+}
+
 .subtitle {
   font-size: 1.2em;
   opacity: 0.9;
@@ -89,6 +108,7 @@ table {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Table headers and cells */
 th {
   background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
   color: white;
@@ -98,16 +118,19 @@ th {
   font-size: 1.1em;
 }
 
+/* Table rows */
 td {
   padding: 15px;
   border-bottom: 1px solid #ecf0f1;
   transition: background-color 0.3s ease;
 }
 
+/* Hover effect for table rows */
 tr:hover td {
   background-color: #f8f9fa;
 }
 
+/* Remove border for last row */
 tr:last-child td {
   border-bottom: none;
 }
@@ -120,7 +143,45 @@ a {
   transition: all 0.3s ease;
 }
 
+/* Hover effect for links */
 a:hover {
   color: #2980b9;
   text-decoration: underline;
+}
+
+/* logo style */
+.logo {
+  width: 24px; /* taille du logo */
+  height: 24px; /* taille uniforme */
+  margin-right: 8px; /* espace entre le logo et le texte */
+  vertical-align: middle; /* aligne bien avec le texte */
+  border-radius: 4px; /* coins arrondis (facultatif) */
+}
+
+.formation {
+  position: relative;
+  display: inline-block;
+}
+
+.formation .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(7, 110, 162, 0.8); /* noir semi-transparent */
+  color: #fff;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 50px; /* positionné au-dessus de l'élément */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  font-size: 0.75rem; /* petite police */
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.formation:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
