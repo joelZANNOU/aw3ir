@@ -14,6 +14,15 @@ body {
   padding: 20px;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    background: radial-gradient(
+      circle,
+      rgba(63, 94, 251, 1) 0%,
+      rgba(252, 70, 107, 1) 100%
+    );
+  }
+}
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -25,7 +34,7 @@ body {
 
 /* Header styles */
 header {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, #3086db 0%, #34495e 100%);
   color: white;
   padding: 40px;
   text-align: center;
@@ -166,7 +175,7 @@ a:hover {
 .formation .tooltip {
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(7, 110, 162, 0.8); /* noir semi-transparent */
+  background-color: rgba(18, 160, 232, 0.8); /* noir semi-transparent */
   color: #fff;
   text-align: center;
   padding: 4px 8px;
