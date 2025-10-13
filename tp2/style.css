@@ -1,0 +1,88 @@
+/* Style du formulaire et des champs */
+form {
+  background: #d4d4d4;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+
+input {
+  width: 250px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.icon-ok {
+  font-size: 1.5em;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: green;
+}
+
+/* Bouton envoyé stylé */
+.btn-primary,
+input[type="submit"] {
+  border-radius: 5px;
+  padding: 6px 12px;
+  display: block; /* Pour centrer le bouton */
+  margin: 12px auto; /* Centrer le bouton */
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  color: #fff;
+  cursor: pointer; /* Changer le curseur au survol */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Désactiver le bouton si le formulaire est invalide */
+form:invalid input[type="submit"] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Champ non valide */
+input:invalid {
+  border: 2px solid red;
+}
+input:invalid + .icon-ok {
+  display: none;
+}
+
+/* Champ valide */
+input:valid + .icon-ok {
+  display: inline-block;
+  color: green;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    max-width: 90%;
+  }
+  label,
+  input {
+    width: 100%;
+    display: block;
+  }
+  input {
+    margin-bottom: 16px;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}

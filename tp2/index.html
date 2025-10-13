@@ -1,40 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Formulaire TP2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <span class="header">
+      <h1>Formulaire TP2</h1>
+      <p>Merci de remplir le formulaire ci-dessous :</p>
+    </span>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>TP2</title>
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <form action="action.html" method="get">
+      <label for="name">Nom</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        minlength="2"
+        maxlength="20"
+        required
+      />
+      <span class="icon-ok">✔</span>
+      <br />
 
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <!-- Place favicon.ico in the root directory -->
+      <label for="firstname">Prénom</label>
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        minlength="2"
+        maxlength="20"
+        required
+      />
+      <span class="icon-ok">✔</span>
+      <br />
 
-  <style>
-    body {
-      background-color: #e9ebee;
-      font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco",
-        "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-      font-size: 16px;
-      margin: 0 auto;
-      max-width: 800px;
-    }
-  </style>
+      <label for="birthday">Date de naissance</label>
+      <input type="date" name="birthday" id="birthday" required />
+      <span class="icon-ok">✔</span>
+      <br />
 
-  <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-  <!--<link rel="stylesheet" href="style.css">-->
-  <!--<script src="js/main.js"></script>-->
-</head>
+      <label for="address">Adresse postale</label>
+      <input
+        type="text"
+        name="address"
+        id="address"
+        minlength="5"
+        maxlength="50"
+        required
+      />
+      <span class="icon-ok">✔</span>
+      <br />
 
-<body>
-  <nav>
-    <a href="..">🏠 Index</a> / TP2
-  </nav>
-  <h1>tp2</h1>
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <img src="../galilee.png" alt="Logo Galilee" />
-</body>
+      <label for="email">Adresse mail</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        minlength="5"
+        maxlength="30"
+        required
+      />
+      <span class="icon-ok">✔</span>
+      <br />
 
+      <input type="submit" class="btn-primary" value="Envoyer" />
+    </form>
+  </body>
 </html>
