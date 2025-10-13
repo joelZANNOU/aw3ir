@@ -1,0 +1,123 @@
+:root {
+  /* Variables CSS */
+  --accent: #6c63ff;
+  --accent-2: #9442f3;
+  --bg1: #eaf7ff;
+  --bg2: #f6f2ff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --muted: #6b7280;
+  --glass-blur: 8px;
+  --radius: 14px;
+  --max-width: 600px;
+  --gap: 1rem;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
+/* Général */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(135deg, var(--bg1), var(--bg2)); */
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+
+  color: #0f1724;
+  -webkit-font-smoothing: antialiased;
+  padding: 1.5rem;
+}
+
+/* Carte centrale */
+.container {
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.15);
+  padding: 2rem;
+  max-width: var(--max-width);
+  width: 100%;
+  text-align: center;
+}
+
+/* Bouton retour */
+a.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2);
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+a.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.25);
+}
+
+/* Titre */
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #0b1320;
+}
+
+/* Texte du résultat */
+p {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 1rem;
+  line-height: 1.6;
+  color: #0f1724;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Champs colorés */
+#name,
+#firstname,
+#birthday {
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.1);
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  margin: 0 0.15rem;
+}
+
+/* Liens */
+#address,
+#email {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 600;
+}
+#address:hover,
+#email:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .container {
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  a.btn-primary {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,182 @@
+body {
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+  background: linear-gradient(115deg, #6c63ff, #a642f3 90%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+form,
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px 32px;
+  box-shadow: 0 6px 50px #5340db42, 6px 6px 6px #0003;
+  max-width: 450px;
+  margin: 40px auto;
+  animation: showUp 1.2s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+@keyframes showUp {
+  /* Animation apparition */
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #3237a7;
+  font-size: 2rem;
+  margin-bottom: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+label {
+  width: 140px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #655dfc;
+  transition: color 0.2s;
+}
+
+input,
+select {
+  width: 240px;
+  padding: 8px 14px;
+  border-radius: 7px;
+  border: 1.5px solid #c5c7ea;
+  font-size: 1.08rem;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background: #eef1fa;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+/*
+Explique ce que fait "focus"
+
+- En CSS (:focus)
+  - Le pseudo-sélecteur :focus cible un élément lorsqu'il reçoit le focus (par exemple via la navigation au clavier, un clic ou via script).
+  - Sert à appliquer des styles visuels (outline, box-shadow, couleur de bordure, etc.) pour indiquer que l'élément est actif et prêt à recevoir des interactions.
+  - Important pour l'accessibilité : veiller à ce que le focus soit visible pour les utilisateurs au clavier. Considérer l'utilisation de :focus-visible pour éviter des contours inadaptés lors d'interactions par souris.
+
+Bref : "focus" indique qu'un élément est actif et prêt à recevoir des entrées ; en CSS on le stylise avec :focus, en JS on le contrôle avec element.focus(), toujours en tenant compte de l'accessibilité et du comportement utilisateur.
+*/
+input:focus {
+  border-color: #5f62fa;
+  box-shadow: 0 0 0 2px #a1adfb52;
+  background: #f9faff;
+}
+
+.icon-ok {
+  font-size: 1.4em;
+  margin-left: 10px;
+  vertical-align: middle;
+  color: #1ec572;
+  transition: opacity 0.2s;
+}
+
+/* Champs valides/non valides */
+input:invalid {
+  border: 2px solid #e04663;
+  background: #fdf1f4;
+}
+input:invalid + .icon-ok {
+  opacity: 0;
+}
+input:valid + .icon-ok {
+  opacity: 1;
+}
+
+/* Bouton stylé et animé */
+.btn-primary,
+input[type="submit"] {
+  display: block;
+  border-radius: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(112deg, #4e54c8 45%, #8f94fb 100%);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(112deg, #4e54c8 45%, #8f94fb 100%);
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: 1.17rem;
+  letter-spacing: 0.5px;
+  transition: box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 2px 14px #4e54c83f;
+}
+.btn-primary:hover,
+input[type="submit"]:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 6px 22px #4e54c85f;
+  background: linear-gradient(112deg, #6f74ff 60%, #a3a8fc 126%);
+}
+input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+form:invalid input[type="submit"] {
+  /* Désactiver le bouton si le formulaire est invalide */
+  background: #d0d1f6;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Liens dynamiques */
+a#address,
+a#email {
+  color: #4e54c8;
+  text-decoration: underline dotted;
+  padding: 2px 0;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a#address:hover,
+a#email:hover {
+  color: #e04663;
+}
+
+/* Animate retour bouton */
+a.btn-primary {
+  margin-bottom: 18px;
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form,
+  .card {
+    max-width: 98vw;
+    padding: 16px 8vw;
+  }
+  label,
+  input {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Extra: effet du survol sur le formulaire */
+form:hover,
+.card:hover {
+  box-shadow: 0 10px 36px #4e54c871;
+  transition: box-shadow 0.3s;
+}
