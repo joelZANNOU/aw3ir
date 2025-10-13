@@ -1,39 +1,116 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP3</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TP3 Bootstrap Formulaire</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
+      .container {
+        max-width: 600px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
     </style>
+  </head>
 
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
+  <body>
+    <div class="container">
+      <h2 class="my-4 text-center">Formulaire Bootstrap</h2>
+      <form id="myform" novalidate>
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-3 col-form-label">Nom</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              minlength="5"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="firstname" class="col-sm-3 col-form-label">Prénom</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              required
+              minlength="5"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="birthday" class="col-sm-3 col-form-label"
+            >Date de naissance</label
+          >
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="birthday" required />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="address" class="col-sm-3 col-form-label"
+            >Adresse postale</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              required
+              minlength="5"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="email" class="col-sm-3 col-form-label"
+            >Adresse email</label
+          >
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="email" required />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Envoyer</button>
+      </form>
+    </div>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP3
-    </nav>
-    <h1>tp3</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
+    <!-- Modal Bootstrap -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="modalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fermer"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Contenu dynamique ici -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/form-validation.js"></script>
+  </body>
 </html>

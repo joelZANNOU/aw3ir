@@ -68,8 +68,6 @@ select {
 }
 
 /*
-Explique ce que fait "focus"
-
 - En CSS (:focus)
   - Le pseudo-sélecteur :focus cible un élément lorsqu'il reçoit le focus (par exemple via la navigation au clavier, un clic ou via script).
   - Sert à appliquer des styles visuels (outline, box-shadow, couleur de bordure, etc.) pour indiquer que l'élément est actif et prêt à recevoir des interactions.
