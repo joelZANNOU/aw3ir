@@ -1,39 +1,183 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TP4 – Formulaire Contact</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP4</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ✅ Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <!-- ✅ Feuille de style externe -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
-
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP4
+  <body>
+    <!-- ✅ Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="..">🏠 TP4</a>
+      </div>
     </nav>
-    <h1>TP4</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
 
+    <!-- ✅ Section principale -->
+    <main
+      class="d-flex flex-column align-items-center justify-content-center py-5"
+    >
+      <!-- ✅ Formulaire de contact -->
+      <div class="card shadow-lg form-card">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <img
+              src="../galilee.png"
+              alt="Logo Galilée"
+              class="logo-img mb-3"
+            />
+            <h1 class="h3 fw-bold text-primary">Formulaire de Contact</h1>
+          </div>
+
+          <!-- ✅ Formulaire -->
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                required
+                minlength="2"
+                onkeyup="calcNbChar(this.id)"
+              />
+              <span id="name-span" class="text-muted small">0 caractères</span>
+            </div>
+
+            <div class="mb-3">
+              <label for="firstname" class="form-label">Prénom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                required
+                minlength="2"
+                onkeyup="calcNbChar(this.id)"
+              />
+              <span id="firstname-span" class="text-muted small"
+                >0 caractères</span
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="date" class="form-label">Date de naissance</label>
+              <input type="date" class="form-control" id="date" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Adresse postale</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                required
+                minlength="5"
+                onkeyup="calcNbChar(this.id)"
+              />
+              <span id="address-span" class="text-muted small"
+                >0 caractères</span
+              >
+
+              <!-- ✅ Bouton de géolocalisation -->
+              <button
+                type="button"
+                id="geoButton"
+                class="btn btn-outline-primary mt-2 w-100"
+              >
+                📍 Géolocaliser
+              </button>
+            </div>
+            <!-- ✅ fermeture correcte du bloc adresse -->
+
+            <div class="mb-3">
+              <label for="mail" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="mail"
+                required
+                onkeyup="calcNbChar(this.id)"
+              />
+              <span id="mail-span" class="text-muted small">0 caractères</span>
+            </div>
+
+            <!-- ✅ Zone d'affichage de la carte -->
+            <div
+              id="map"
+              class="mb-3 text-center border rounded bg-light"
+              style="
+                height: 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              Carte de localisation
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="submit" class="btn btn-primary flex-fill me-2">
+                💾 Ajouter
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger flex-fill ms-2"
+                onclick="contactStore.reset();displayContactList();"
+              >
+                🔄 Réinitialiser
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ✅ Tableau des contacts (hors du formulaire) -->
+      <div class="card shadow mt-5 contact-list w-100">
+        <div class="card-body">
+          <h2 class="h5 text-center text-secondary mb-3">Liste des contacts</h2>
+          <div class="table-responsive">
+            <table
+              class="table table-striped table-hover align-middle text-center"
+            >
+              <thead class="table-primary">
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>Date de naissance</th>
+                  <th>Adresse</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- contenu généré JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ✅ Footer -->
+    <footer class="footer text-center py-3">
+      <small>
+        © 2025 – Université Sorbonne Paris Nord | TP4 Web – Joël ZANNOU
+      </small>
+    </footer>
+
+    <!-- ✅ Scripts -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/gps.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/form-validation.js"></script>
+  </body>
 </html>
