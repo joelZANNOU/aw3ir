@@ -1,39 +1,128 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TP5 Météo - VueJS</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/weather-icons.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP5</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <div id="weatherApp" class="container py-4">
+      <h1 class="text-center mb-4">🌤️ Application Météo (VueJS)</h1>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+      <!-- Formulaire de saisie -->
+      <form class="input-group mb-3 shadow-sm" v-on:submit="addCity">
+        <input
+          type="search"
+          class="form-control"
+          v-model="formCityName"
+          placeholder="Saisissez une ville"
+          aria-label="Nom de la ville"
+          required
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary px-4" type="submit">Go!</button>
+        </div>
+      </form>
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
+      <div class="text-muted mb-2">{{ formCityName.length }} car.</div>
+      <div class="alert alert-danger" role="alert" v-if="messageForm != ''">
+        {{ messageForm }}
+      </div>
 
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
+      <!-- Liste des villes -->
+      <h3 class="mt-4">Liste des villes ({{ cityList.length }})</h3>
+      <ul class="list-group shadow-sm">
+        <li
+          v-for="city in cityList"
+          :key="city.name"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span @click="meteo(city)" style="cursor: pointer"
+            >{{ city.name }}</span
+          >
+          <button
+            class="btn btn-secondary btn-sm"
+            title="Supprimer"
+            @click="remove(city)"
+          >
+            ×
+          </button>
+        </li>
+      </ul>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP5
-    </nav>
-    <h1>TP5</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
+      <div class="alert alert-primary mt-3" v-if="cityList.length==0">
+        Aucune ville saisie !
+      </div>
 
+      <div class="mt-4" v-if="cityWeatherLoading=== true">
+        Chargement de la météo...
+      </div>
+
+      <!-- Carte et infos météo -->
+      <div class="card mt-4 shadow" style="width: 20rem" v-if="cityWeather">
+        <!-- En-tête : ville + heure -->
+        <div
+          class="card-header d-flex justify-content-between align-items-center bg-light"
+        >
+          <span>{{ cityWeather.name }}</span>
+          <span>
+            <i class="wi wi-time-3" style="color: #007bff"></i>
+            {{ localTime }}
+          </span>
+        </div>
+
+        <!-- Carte OpenStreetMap -->
+        <iframe
+          width="100%"
+          height="250"
+          style="border: 0"
+          :src="'https://www.openstreetmap.org/export/embed.html?layer=mapnik&marker='
+                + cityWeather.coord.lat + ',' + cityWeather.coord.lon"
+          allowfullscreen
+          loading="lazy"
+        >
+        </iframe>
+
+        <div class="card-body">
+          <h5 class="card-title">
+            <i :class="'wi wi-owm-day-' + cityWeather.weather[0].id"></i>
+            {{ cityWeather.main.temp }}
+            <i class="wi wi-celsius"></i>
+          </h5>
+          <p class="card-text text-capitalize">
+            {{ cityWeather.weather[0].description }}
+          </p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="wi wi-cloud"></i> Nuage : {{ cityWeather.clouds.all }}%
+          </li>
+          <li class="list-group-item">
+            <i class="wi wi-humidity"></i> Humidité : {{
+            cityWeather.main.humidity }}%
+          </li>
+          <li class="list-group-item">
+            <i class="wi wi-windy"></i> Vent : {{ cityWeather.wind.speed }} km/h
+          </li>
+          <li class="list-group-item">
+            <i class="wi wi-sunrise"></i> Levé du soleil : {{ new
+            Date(cityWeather.sys.sunrise * 1000).toLocaleTimeString() }}
+          </li>
+          <li class="list-group-item">
+            <i class="wi wi-sunset"></i> Couché du soleil : {{ new
+            Date(cityWeather.sys.sunset * 1000).toLocaleTimeString() }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Librairies JS -->
+    <script src="js/libs/vue.js"></script>
+    <script src="js/libs/bootstrap.bundle.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
