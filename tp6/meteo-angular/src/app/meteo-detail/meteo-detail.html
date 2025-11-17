@@ -1,0 +1,77 @@
+<div *ngIf="meteo && meteo.cod == 200">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">🏠 Accueil</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Météo pour {{ meteo.name }}</li>
+    </ol>
+  </nav>
+
+  <div class="card shadow-sm" style="width: 350px; margin: 0 auto">
+    <div class="card-header text-center">
+      {{ meteo.name }} <br />
+      <small>{{ meteo.dt * 1000 | date : 'EEEE d MMMM HH:mm' }}</small>
+    </div>
+
+    <!-- OpenWeatherMap tile -->
+    <a
+      class="map-link"
+      [attr.href]="openWeatherDetailUrl || null"
+      target="_blank"
+      rel="noopener noreferrer"
+      [title]="'Voir la reponse JSON OpenWeatherMap pour ' + meteo.name"
+    >
+      <div class="map-stack card-img-top" *ngIf="openWeatherTileUrl && osmTileUrl; else mapFallback">
+        <img
+          class="map-img map-base"
+          [src]="osmTileUrl"
+          [alt]="'Carte OpenStreetMap pour ' + meteo.name"
+        />
+        <img
+          class="map-img map-overlay"
+          [src]="openWeatherTileUrl"
+          [alt]="'Couche meteo OpenWeatherMap pour ' + meteo.name"
+        />
+      </div>
+      <span class="map-attribution">Map data: OpenStreetMap contributors | Weather layer: OpenWeatherMap</span>
+    </a>
+    <ng-template #mapFallback>
+      <div class="map-placeholder card-img-top">Carte meteo indisponible</div>
+    </ng-template>
+
+    <div class="card-body text-center">
+      <h4>
+        <i class="wi wi-owm-day-{{ meteo.weather[0].id }}"></i>
+        {{ meteo.main.temp }} <i class="wi wi-celsius"></i>
+      </h4>
+
+      <p class="text-muted">
+        {{ meteo.weather[0].description }}
+      </p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">🌥 Nuages : {{ meteo.clouds.all }}%</li>
+      <li class="list-group-item">💧 Humidité : {{ meteo.main.humidity }}%</li>
+      <li class="list-group-item">💨 Vent : {{ meteo.wind.speed }} km/h</li>
+      <li class="list-group-item">
+        🌅 Lever du soleil :
+        {{ meteo.sys.sunrise * 1000 | date : 'H:mm' }}
+      </li>
+      <li class="list-group-item">
+        🌇 Coucher du soleil :
+        {{ meteo.sys.sunset * 1000 | date : 'H:mm' }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Message d'erreur -->
+<div *ngIf="meteo && meteo.cod != 200" class="alert alert-danger mt-4">
+  ❌ Erreur : {{ meteo.message }} (code {{ meteo.cod }})
+</div>
+
+<!-- Debug -->
+<hr />
+<pre>{{ meteo | json }}</pre>

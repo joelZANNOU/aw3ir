@@ -1,0 +1,51 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">🏠</li>
+  </ol>
+</nav>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="input-group mb-2">
+    <input
+      type="search"
+      placeholder="Ville ..."
+      class="form-control"
+      required
+      minlength="3"
+      [(ngModel)]="city.name"
+      name="name"
+      #name="ngModel"
+    />
+
+    <button class="btn btn-primary" type="submit" [disabled]="!name.valid">Go!</button>
+  </div>
+
+  <small *ngIf="city.name" class="text-muted"> {{ city.name.length }} caractères </small>
+
+  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger mt-2">
+    <div *ngIf="name.errors?.['required']">La saisie de la ville est obligatoire</div>
+    <div *ngIf="name.errors?.['minlength']">Doit contenir au moins 3 caractères.</div>
+  </div>
+</form>
+
+<hr />
+
+<h4>Liste des villes ({{ cityList.length }})</h4>
+
+<ul class="list-group">
+  <li
+    *ngFor="let city of cityList"
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <a routerLink="/meteo/{{ city.name }}" class="d-block w-100">
+      {{ city.name }}
+    </a>
+
+    <button class="btn btn-sm btn-secondary" (click)="remove(city)">&times;</button>
+  </li>
+</ul>
+
+<div class="alert alert-primary mt-3" *ngIf="cityList.length === 0">Aucune ville saisie !</div>
+
+<hr />
+<pre>{{ cityList | json }}</pre>

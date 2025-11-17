@@ -1,0 +1,119 @@
+/* 🌤️ --- STYLE GÉNÉRAL --- */
+body {
+  background: linear-gradient(180deg, #cde9ff 0%, #f9fcff 100%);
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+h1 {
+  font-weight: 600;
+  color: #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+h1::before {
+  content: "🌤️";
+  font-size: 1.5rem;
+}
+
+/* 🌍 --- CONTAINER PRINCIPAL --- */
+#weatherApp {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 🔎 --- FORMULAIRE --- */
+form {
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+input[type="search"] {
+  border-radius: 50px 0 0 50px !important;
+  padding: 10px 20px;
+  border: 1px solid #ced4da;
+}
+
+button.btn-primary {
+  border-radius: 0 50px 50px 0 !important;
+  transition: background 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* 🗺️ --- CARTE MÉTÉO --- */
+.card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: rgba(13, 110, 253, 0.1);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+/* 🌡️ --- INFORMATIONS MÉTÉO --- */
+.list-group-item {
+  border: none;
+  background-color: #f9fbfd;
+  font-size: 0.95rem;
+}
+
+.list-group-item i {
+  color: #0d6efd;
+  margin-right: 8px;
+}
+
+/* 🕓 --- HEURE --- */
+.wi-time-3 {
+  color: #0d6efd;
+  margin-right: 4px;
+  font-size: 1.2rem;
+}
+
+/* 🌙 --- ANIMATION D’APPARITION --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 📱 --- RESPONSIVE --- */
+@media (max-width: 576px) {
+  #weatherApp {
+    padding: 0 10px;
+  }
+
+  .card {
+    width: 100% !important;
+  }
+}
