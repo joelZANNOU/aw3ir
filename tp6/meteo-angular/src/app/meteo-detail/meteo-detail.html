@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a routerLink="/">🏠 Accueil</a>
+        <a href="http://localhost:4200/">🏠 Accueil</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Météo pour {{ meteo.name }}</li>
     </ol>
@@ -64,6 +64,30 @@
         {{ meteo.sys.sunset * 1000 | date : 'H:mm' }}
       </li>
     </ul>
+
+    <div class="forecast-container" *ngIf="forecastDays.length">
+      <h5 class="forecast-title">Previsions sur 5 jours</h5>
+      <div class="forecast-list">
+        <div class="forecast-item" *ngFor="let day of forecastDays">
+          <div class="forecast-date">{{ day.date | date : 'EEEE d MMM' }}</div>
+          <div class="forecast-icon">
+            <i class="wi wi-owm-day-{{ day.weatherId }}"></i>
+          </div>
+          <div class="forecast-temp">
+            {{ day.temp | number : '1.0-0' }} <i class="wi wi-celsius"></i>
+          </div>
+          <div class="forecast-range">
+            Min {{ day.tempMin | number : '1.0-0' }}&deg; / Max
+            {{ day.tempMax | number : '1.0-0' }}&deg;
+          </div>
+          <div class="forecast-desc">{{ day.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="forecastError" class="alert alert-warning mt-3">
+      Previsions indisponibles : {{ forecastError }}
+    </div>
   </div>
 </div>
 
@@ -72,6 +96,3 @@
   ❌ Erreur : {{ meteo.message }} (code {{ meteo.cod }})
 </div>
 
-<!-- Debug -->
-<hr />
-<pre>{{ meteo | json }}</pre>

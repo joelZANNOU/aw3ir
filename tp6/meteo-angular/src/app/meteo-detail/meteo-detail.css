@@ -59,3 +59,58 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
+
+.forecast-container {
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  background: #f8fcff;
+}
+
+.forecast-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.forecast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.forecast-item {
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.forecast-date {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.forecast-icon {
+  font-size: 26px;
+  margin: 4px 0;
+}
+
+.forecast-temp {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.forecast-range {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 2px;
+}
+
+.forecast-desc {
+  font-size: 12px;
+  margin-top: 6px;
+  text-transform: capitalize;
+}
