@@ -1,6 +1,6 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MeteoService } from '../services/meteo.service';
 
 interface ForecastDay {
@@ -17,7 +17,7 @@ interface ForecastDay {
   templateUrl: './meteo-detail.html',
   styleUrls: ['./meteo-detail.css'],
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, DecimalPipe, RouterModule],
 })
 export class MeteoDetail implements OnInit {
   meteo: any = null;
@@ -84,7 +84,6 @@ export class MeteoDetail implements OnInit {
   }
 
   private computeTileCoords(lat: number, lon: number): { x: number; y: number } {
-    // Translate lat/lon to XYZ tile indices for OpenWeatherMap tiles.
     const latRad = (lat * Math.PI) / 180;
     const n = Math.pow(2, this.mapZoom);
     const x = Math.floor(((lon + 180) / 360) * n);

@@ -31,9 +31,10 @@ export class Meteo implements OnInit {
   }
 
   onSubmit() {
-    if (this.city.name && !this.isCityExist(this.city.name)) {
+    const normalized = this.city.name?.trim();
+    if (normalized && !this.isCityExist(normalized)) {
       const item = new MeteoItem();
-      item.name = this.city.name;
+      item.name = normalized;
 
       this.cityList.push(item);
       this.saveCityList();
@@ -44,14 +45,33 @@ export class Meteo implements OnInit {
     }
   }
 
+  /*onSubmit() {
+    if (this.city.name !== undefined && this.isCityExist(this.city.name) === false) {
+      let currentCity = new MeteoItem();
+      currentCity.name = this.city.name;
+      this.cityList.push(currentCity);
+
+      this.saveCityList();
+
+      console.log(this.city.name, 'ajouté à la dans la liste');
+    } else {
+      console.log(this.city.name, 'existe déjà dans la liste');
+    }
+  }*/
+
   remove(city: MeteoItem) {
     this.cityList = this.cityList.filter((c) => c.name !== city.name);
 
     this.saveCityList();
   }
 
-  isCityExist(name: string): boolean {
+  /*isCityExist(name: string): boolean {
     return this.cityList.some((item) => item.name?.toUpperCase() === name.toUpperCase());
+  }*/
+
+  isCityExist(name: string) {
+    const norm = name.trim().toUpperCase();
+    return this.cityList.some((item) => item.name?.trim().toUpperCase() === norm);
   }
 
   saveCityList() {

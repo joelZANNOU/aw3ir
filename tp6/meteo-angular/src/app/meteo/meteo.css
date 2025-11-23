@@ -1,0 +1,50 @@
+.city-card,
+.city-list-card {
+  border: none;
+  border-radius: var(--card-radius);
+}
+
+.city-card .card-body,
+.city-list-card .card-body {
+  padding: 2rem;
+}
+
+.city-form .form-control {
+  border-radius: 999px 0 0 999px;
+  border: 1px solid #dde2f2;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.city-form .btn {
+  border-radius: 0 999px 999px 0;
+}
+
+.city-list .list-group-item {
+  border: none;
+  border-bottom: 1px solid #f0f2fb;
+  padding: 1rem 0;
+}
+
+input::placeholder {
+  font-size: 0.8em; /* ou 12px, selon ton besoin */
+}
+
+.city-list .list-group-item:last-child {
+  border-bottom: none;
+}
+
+.city-info a {
+  font-weight: 600;
+  color: var(--app-text);
+}
+
+.city-info small {
+  color: var(--app-muted);
+}
+
+.empty-state {
+  border-radius: var(--card-radius);
+  border: 1px dashed #c5cbe3;
+  background: #f8f9ff;
+}

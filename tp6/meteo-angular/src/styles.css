@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --app-bg: linear-gradient(180deg, #eef3ff 0%, #ffffff 60%);
+  --app-text: #1f2d3d;
+  --app-muted: #7a8496;
+  --card-radius: 1.25rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: var(--app-bg);
+  color: var(--app-text);
+  min-height: 100vh;
+}
+
+a {
+  color: #326dff;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #5b7cfd, #326dff);
+  border: none;
+  box-shadow: 0 10px 20px rgba(50, 109, 255, 0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  box-shadow: none;
+}

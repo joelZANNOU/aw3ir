@@ -1,8 +1,8 @@
 <div *ngIf="meteo && meteo.cod == 200">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="http://localhost:4200/">🏠 Accueil</a>
+      <li class="nav-link">
+        <a routerLink="/"> Liste des villes / </a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Météo pour {{ meteo.name }}</li>
     </ol>
@@ -22,7 +22,10 @@
       rel="noopener noreferrer"
       [title]="'Voir la reponse JSON OpenWeatherMap pour ' + meteo.name"
     >
-      <div class="map-stack card-img-top" *ngIf="openWeatherTileUrl && osmTileUrl; else mapFallback">
+      <div
+        class="map-stack card-img-top"
+        *ngIf="openWeatherTileUrl && osmTileUrl; else mapFallback"
+      >
         <img
           class="map-img map-base"
           [src]="osmTileUrl"
@@ -34,7 +37,9 @@
           [alt]="'Couche meteo OpenWeatherMap pour ' + meteo.name"
         />
       </div>
-      <span class="map-attribution">Map data: OpenStreetMap contributors | Weather layer: OpenWeatherMap</span>
+      <span class="map-attribution"
+        >Map data: OpenStreetMap contributors | Weather layer: OpenWeatherMap</span
+      >
     </a>
     <ng-template #mapFallback>
       <div class="map-placeholder card-img-top">Carte meteo indisponible</div>
@@ -77,8 +82,7 @@
             {{ day.temp | number : '1.0-0' }} <i class="wi wi-celsius"></i>
           </div>
           <div class="forecast-range">
-            Min {{ day.tempMin | number : '1.0-0' }}&deg; / Max
-            {{ day.tempMax | number : '1.0-0' }}&deg;
+            Min {{ day.tempMin | number : '1.0-0' }}° · Max {{ day.tempMax | number : '1.0-0' }}°
           </div>
           <div class="forecast-desc">{{ day.description }}</div>
         </div>
@@ -95,4 +99,3 @@
 <div *ngIf="meteo && meteo.cod != 200" class="alert alert-danger mt-4">
   ❌ Erreur : {{ meteo.message }} (code {{ meteo.cod }})
 </div>
-
