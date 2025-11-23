@@ -1,14 +1,14 @@
 <div *ngIf="meteo && meteo.cod == 200">
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" class="detail-breadcrumb">
     <ol class="breadcrumb">
       <li class="nav-link">
-        <a routerLink="/"> Liste des villes / </a>
+        <a routerLink="/"> Liste des villes </a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Météo pour {{ meteo.name }}</li>
     </ol>
   </nav>
 
-  <div class="card shadow-sm" style="width: 350px; margin: 0 auto">
+  <div class="card shadow-sm" style="width: 420px; margin: 0 auto">
     <div class="card-header text-center">
       {{ meteo.name }} <br />
       <small>{{ meteo.dt * 1000 | date : 'EEEE d MMMM HH:mm' }}</small>

@@ -1,11 +1,9 @@
-<div class="row g-4">
-  <div class="col-lg-5">
+<div class="row g-4 flex-column align-items-center">
+  <div class="col-12">
     <div class="card shadow-sm h-100 city-card">
       <div class="card-body">
         <h5 class="card-title">Ajouter une ville</h5>
-        <p class="card-subtitle text-muted mb-4">
-          Saisissez le nom d'une ville puis laissez-nous retrouver sa météo.
-        </p>
+        <p class="card-subtitle text-muted mb-4">Saisissez le nom d'une ville.</p>
 
         <form class="city-form" (ngSubmit)="onSubmit()">
           <div class="input-group input-group-lg mb-2">
@@ -36,7 +34,7 @@
     </div>
   </div>
 
-  <div class="col-lg-7">
+  <div class="col-12">
     <div class="card shadow-sm h-100 city-list-card">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">

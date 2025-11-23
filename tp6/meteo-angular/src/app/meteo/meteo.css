@@ -2,6 +2,9 @@
 .city-list-card {
   border: none;
   border-radius: var(--card-radius);
+  width: min(100%, 520px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .city-card .card-body,
@@ -27,7 +30,7 @@
 }
 
 input::placeholder {
-  font-size: 0.8em; /* ou 12px, selon ton besoin */
+  font-size: 0.8em;
 }
 
 .city-list .list-group-item:last-child {
