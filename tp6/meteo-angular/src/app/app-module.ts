@@ -1,24 +1,24 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Meteo } from './meteo/meteo';
 import { MeteoDetail } from './meteo-detail/meteo-detail';
 
 @NgModule({
-  declarations: [
-    App
-  ],
+  declarations: [App],
   imports: [
     BrowserModule,
+    FormsModule, // <-- ajouté
+    ReactiveFormsModule, // <-- ajouté
     AppRoutingModule,
     Meteo,
-    MeteoDetail
+    MeteoDetail,
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}
